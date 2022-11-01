@@ -1,0 +1,22 @@
+b=df.query("subregion=='California'")
+print(b.info())
+#print(b['brand_name'].unique())
+#for i in b['city'].unique():
+#    print(b.query("city=='"+str(i)+"'").price_range_id.mean())
+
+
+
+aa=[b.query("city=='"+str(i)+"'").shape[0] for i in b['city'].unique()]
+bb=[b.query("city=='"+str(i)+"'").rating.mean() for i in b['city'].unique()]
+cc=[b.query("city=='"+str(i)+"'").price_range_id.mean() for i in b['city'].unique()]
+dd=[b.query("city=='"+str(i)+"'").maximum_days_advance_for_reservation.mean() for i in b['city'].unique()]
+
+df1=p.DataFrame({"City":b['city'].unique(),"restaurant_count":aa,"rating":bb,"price_range":cc,"ReservationAdvance":dd})
+
+print(df1)
+
+
+aa=[b.query('brand_name=="'+str(i)+'"').shape[0] for i in b['brand_name'].unique()]
+bb=[b.query('brand_name=="'+str(i)+'"').price_range_id.mean() for i in b['brand_name'].unique()]
+df2=p.DataFrame({"brand_name":b['brand_name'].unique(),"restaurant_count":aa,"avg_price_range":bb})
+print(df2)

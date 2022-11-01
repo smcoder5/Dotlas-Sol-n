@@ -1,0 +1,17 @@
+import numpy as n
+
+name=n.array([l['name'] for i in df['menu'] if(i!=None) for j in i for k in j['sections'] for l in k['items']])
+pval=n.array([l['price']['value']  if(l['price']!=None) else "Absent" for i in df['menu'] if(i!=None) for j in i for k in j['sections'] for l in k['items']])
+p_cur=n.array([l['price']['currency_code']  if(l['price']!=None) else "Absent" for i in df['menu'] if(i!=None) for j in i for k in j['sections'] for l in k['items']])
+i_desc=n.array([l['description'] for i in df['menu'] if(i!=None) for j in i for k in j['sections'] for l in k['items']])
+s_desc=n.array([k['description'] for i in df['menu'] if(i!=None) for j in i for k in j['sections'] for l in k['items']])
+m_name=n.array([j['name'] for i in df['menu'] if(i!=None) for j in i for k in j['sections'] for l in k['items']])
+m_desc=n.array([j['description'] for i in df['menu'] if(i!=None) for j in i for k in j['sections'] for l in k['items']])
+m_pro=n.array([j['provider_name'] for i in df['menu'] if(i!=None) for j in i for k in j['sections'] for l in k['items']])
+s_name=n.array([k['name'] for i in df['menu'] if(i!=None) for j in i for k in j['sections'] for l in k['items']])
+r_id=n.array([df['restaurant_id'].iloc[i] for i in range(df.shape[0]) if(a['menu'].iloc[i]!=None) for j in a['menu'].iloc[i] for k in j['sections'] for l in k['items']]) 
+
+
+df3=p.DataFrame({"restaurant_id":r_id,"menu_name":m_name,"menu_description":m_desc,"menu_provider":m_pro,"section_name":s_name,"section_description":s_desc,"item_name":name,"item_description":i_desc,"item_price":pval,"item_price_currency":p_cur})
+print(df3)
+print(df3.info())

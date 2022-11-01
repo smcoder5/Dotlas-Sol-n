@@ -1,0 +1,10 @@
+import seaborn as s 
+import matplotlib.pyplot as pt 
+
+aa=a[["price_range_id",
+    "rating",
+    "rating_count",
+    "review_count",
+    "daily_reservation_count"]]
+s.pairplot(aa)
+pt.show()

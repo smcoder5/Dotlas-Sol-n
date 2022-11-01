@@ -1,0 +1,15 @@
+import matplotlib.pyplot as pt
+
+
+df21=df2.query("restaurant_count>=5") 
+
+
+ab=[df.query('brand_name=="'+i+'"').review_count.mean() for i in df21['brand_name']]
+#df21['avg_rev']
+df21['review_count']=ab 
+
+df21.sort_values(by=['review_count'],ascending=False,inplace=True) 
+
+pt.figure(figsize=(10,10))
+pt.barh(df21.head()['brand_name'],df21.head()['review_count'])
+pt.show()

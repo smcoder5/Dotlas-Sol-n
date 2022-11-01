@@ -1,0 +1,11 @@
+bb=[]
+for i in df['safety_precautions']:
+    #i=i.json()
+    cc=[]
+    for j in i:
+        if(i[j]==True):
+            cc.append(j) 
+    bb.append(cc)
+
+print(bb)            
+print(len(bb))

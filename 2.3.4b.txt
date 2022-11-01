@@ -1,0 +1,24 @@
+import numpy as n
+import pandas as p
+
+
+def distt(lat,lon):
+    lt=n.array(a['latitude'])
+    ln=n.array(a['longitude'])
+    m=lt.size
+    dd=[GD((lt[i],ln[i]),(lat,lon)).m for i in range(m)] 
+    a['dist']=dd
+    a.sort_values(by=['dist'],inplace=True)
+    
+    aa=a.query("dist<=100")
+    #print(aa.info())
+    
+    bb={i:[j for i in aa['categories'] for j in i].count(i) for i in set([j for i in aa['categories'] for j in i])}
+    
+    
+    bb=p.DataFrame(bb.items(),columns=['category','number']).sort_values(by=['number'],ascending=False)
+    #print(bb)
+    return aa.shape[0],bb.iloc[0]
+        
+    
+print(distt(37.799068, -122.408226))

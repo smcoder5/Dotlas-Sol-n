@@ -1,0 +1,15 @@
+import pandas as p
+import time
+
+####        https://github.com/dotlas/mission_dotlas/blob/main/mission.ipynb 
+
+####        https://pythonians.medium.com/13-advanced-python-scripts-for-everyday-programming-8de4c6dba476
+
+
+str1 = "https://dotlas-marketing.s3.amazonaws.com/interviews/california_restaurants.json"
+
+tt=time.time()
+df=p.read_json(str1) 
+#print(a)
+print("Time Completed in:",time.time()-tt," seconds")
+df["restaurant_id"] = range(1, len(df) + 1)

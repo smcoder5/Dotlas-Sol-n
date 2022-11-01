@@ -1,0 +1,19 @@
+import numpy as n
+
+
+print(df.info())
+
+#   .median()
+
+
+m,_=df.shape
+
+
+    
+bnr=[n.median(n.array(df.query('brand_name=="'+df.brand_name.iloc[i]+'"')['rating'])) if(df.rating.iloc[i]==0 or df.rating.iloc[i]==None) else df.rating.iloc[i] for i in range(m)]
+ra=[n.median(n.array(df.query('brand_name=="'+df.city.iloc[i]+'"')['rating'])) if(df.rating.iloc[i]==0 or df.rating.iloc[i]==None) else df.rating.iloc[i] for i in range(m)]
+ca=[n.median(n.array(a.query('brand_name=="'+df.city.iloc[i]+'"')['rating'])) if(df.rating.iloc[i]==0 or df.rating.iloc[i]==None) else df.rating.iloc[i] for i in range(m)]
+
+df['imputed_rating_brand']=bnr
+df['imputed_rating_area']=ra
+df['imputed_rating_city']=ca
